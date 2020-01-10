@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"   
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ 
+   <head >
+
+    </head>
+      
+<body>
+  <header>
+    <h1>Template 1</h1>
+  </header>
+  <section layout:fragment="head">
+    <p>Head Content - Template 1</p>
+  </section>
+
+  <section layout:fragment="content">
+    <p>Page Content - Template 1</p>
+  </section>
+  <footer>
+    <p>My footer </p>
+    <p layout:fragment="footer">Footer - Template 1</p>
+  </footer>  
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{officialLayout}">
+<meta charset="UTF-8" />
+<title>Onay Bekleyen Sigorta Talebi</title>
+<body>
+
+	<section layout:fragment="contentheader">
+		<p>
+			<strong>Onay Bekleyen Sigorta Talebi</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+		<form action="#" th:action="@{/insurance}" th:object="${insurance}"
+			method="post" class="needs-validation" novalidate>
+
+			<div th:substituteby="partnerInfo :: partner"></div>
+			<div th:substituteby="common/customerInfoReadOnly :: customer"></div>
+			<div th:substituteby="insuranceDemandReadOnly :: insurance"></div>
+			
+
+			<button type="submit" class="btn btn-primary">Kaydet</button>
+		</form>
+		<script type="text/javascript" th:src="@{js/insurance.js}"></script>
+
+	</section>
+
+</body>
+</html>

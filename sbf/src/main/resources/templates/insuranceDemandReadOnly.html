@@ -1,0 +1,180 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="insurance">
+
+		<div class="card">
+			<div class="card-header">Sigorta Talebi</div>
+			<div class="card-body">
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="selectedPolicyType">Poliçe Türü</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{selectedPolicyType}" class="form-control-static"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="payeeExist">Rehin / Alacaklı</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{payeeExist}" class="form-control-static"></p>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="bankaFinans">Banka Finans</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+					<p th:text="*{bankaFinans}" class="form-control-static"></p>
+						
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="sube">Şube</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{sube}" class="form-control-static"></p>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="processType">İşlem Türü</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{processType}" class="form-control-static"></p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header">Trafik / Kasko</div>
+			<div class="card-body">
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label class="control-label">Plaka</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p class="form-control-static">
+							<span th:field="*{plakaIl}"></span> <span th:field="*{plakaHarf}"></span>
+							<span th:field="*{plakaSayi}"></span>
+						</p>
+					</div>
+				
+					<div class="col-md-2 col-sm-2">
+						<label for="plakaSifirIl">Plaka Sıfır</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{plakaSifirIl}" class="form-control-static"></p>
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="asbisNo">Asbis No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{asbisNo}" class="form-control-static"></p>
+					</div>
+				
+					<div class="col-md-2 col-sm-2">
+						<label for="belgeSeri">Belge Seri No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+					<p class="form-control-static">
+					<span th:field="*{belgeSeri}"></span>
+						<span th:field="*{belgeSeriNo}"></span>
+						</p>
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="marka">Marka</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{marka}" class="form-control-static"></p>
+					</div>
+				
+					<div class="col-md-2 col-sm-2">
+						<label for="markaKodu">Marka Kodu</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{markaKodu}" class="form-control-static"></p>
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="modelYili">Model Yılı</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{modelYili}" class="form-control-static"></p>
+					</div>									
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="motorNo">Motor No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{motorNo}" class="form-control-static"></p>
+					</div>
+				
+					<div class="col-md-2 col-sm-2">
+						<label for="saseNo">Şase No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{saseNo}" class="form-control-static"></p>
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="policeBitisVadesi">Poliçe Bitiş Tarihi</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{policeBitisVadesi}" class="form-control-static"></p>
+					</div>									
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="referansSigortaSirketi">Referans Sigorta Şirketi</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{referansSigortaSirketi}" class="form-control-static"></p>
+					</div>
+				
+					<div class="col-md-2 col-sm-2">
+						<label for="referansAcenteNo">Referans Acente No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{referansAcenteNo}" class="form-control-static"></p>
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="referansPoliceNo">Referans Poliçe No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{referansPoliceNo}" class="form-control-static"></p>
+					</div>									
+				</div>
+				
+			</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

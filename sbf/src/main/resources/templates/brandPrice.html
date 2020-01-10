@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{signedLayout}">
+<meta charset="UTF-8" />
+<title>Harç Giriş</title>
+<body>
+
+	<section layout:fragment="contentheader">
+		<p>
+			<strong>Harç Giriş</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+
+		<form autocomplete="off" action="#" th:action="@{/brandprice}"
+			th:object="${brandPrices}" method="post" role="form"
+			data-toggle="validator" class="form-horizontal" id="brandPricesform">
+
+			<div class="card">
+				<div class="card-header">Harç Bilgileri</div>
+				<div class="card-body">
+
+					<div class="form-group form-row">
+
+						<div class="col-md-2 col-sm-2">
+							<label for="firstPrice">İlk 3 Fiyat</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<input type="number" th:field="*{firstPrice}"
+								placeholder="İlk 3 Fiyat" maxlength="11" size="11"
+								class="form-control" min="0" max="9999999" required="required" />
+							<div th:if="${#fields.hasErrors('firstPrice')}"
+								th:errors="*{firstPrice}" class="invalid-feedback d-block"></div>
+						</div>
+
+
+						<div class="col-md-2 col-sm-2">
+							<label for="feePrice">Harç</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<input type="number" th:field="*{feePrice}" placeholder="Harç"
+								maxlength="11" size="11" class="form-control" min="0"
+								max="9999999" required="required" />
+							<div th:if="${#fields.hasErrors('feePrice')}"
+								th:errors="*{feePrice}" class="invalid-feedback d-block"></div>
+						</div>
+
+
+						<div class="col-md-2 col-sm-2">
+							<label for="servicePrice">Hizmet</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<input type="number" th:field="*{servicePrice}"
+								placeholder="Hizmet" maxlength="11" size="11"
+								class="form-control" min="0" max="9999999" required="required" />
+							<div th:if="${#fields.hasErrors('servicePrice')}"
+								th:errors="*{servicePrice}" class="invalid-feedback d-block"></div>
+						</div>
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Kaydet</button>
+
+				</div>
+			</div>
+		</form>
+
+	</section>
+
+</body>
+</html>

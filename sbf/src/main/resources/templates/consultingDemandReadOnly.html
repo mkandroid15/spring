@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="consulting">
+
+		<div class="card">
+			<div class="card-header">Danışmanlık Talebi</div>
+			<div class="card-body">
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="consultingType">Danışmanlık Türü</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{consultingType}" class="form-control-static"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="subject">Konu</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{subject}" class="form-control-static"></p>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="description">Açıklama</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{description}" class="form-control-static"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="file">Dosya</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+					<a th:href="@{|/download/*{fileguid}|}"><span th:text="dosya"></span></a>
+						<!--  	<p th:text="*{file}" class="form-control-static"></p>  -->
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="dangerState">Tehlike Türü</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{dangerState}" class="form-control-static"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="personCount">Personel Sayısı</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{personCount}" class="form-control-static"></p>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="naceCode">Nace Kodu</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{naceCode}" class="form-control-static"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="osgbHizmetDesc">Osgb Hizmetleri</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+					   	<p th:text="*{osgbHizmetDesc}" class="form-control-static"></p> 
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="osgbDanismanlikDesc">Osgb Danışmanlık</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{osgbDanismanlikDesc}" class="form-control-static"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="periyodSaglikDesc">Periyodik Sağlık Hizmetleri</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+					   	<p th:text="*{periyodSaglikDesc}" class="form-control-static"></p> 
+					</div>
+				</div>
+				
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="egitimDesc">Eğitim Hizmetleri</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{egitimDesc}" class="form-control-static"></p>
+					</div>
+
+					
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

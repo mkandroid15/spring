@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{signedLayout}">
+<meta charset="UTF-8" />
+<title>Marka</title>
+<body>
+
+	<section layout:fragment="contentheader">
+		<p>
+			<strong>Marka Sayfası</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+		<form action="#" th:action="@{/brand}" th:object="${brand}"
+			method="post" class="needs-validation" novalidate>
+
+			<div th:substituteby="partnerInfo :: partner"></div>
+			<div th:substituteby="customerInfo :: customer"></div>
+
+			<div class="card">
+				<div class="card-header">Marka</div>
+				<div class="card-body">
+
+					<div class="col-md-2 col-sm-2">
+						<label for="sube">Marka Adı</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="text" th:field="*{name}" placeholder="Marka adı"
+							maxlength="15" class="form-control" required="required" />
+						<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+							class="invalid-feedback d-block"></div>
+					</div>
+
+
+				</div>
+			</div>
+
+
+			<div class="card">
+				<div class="card-header">Sınıflar</div>
+				<div class="card-body">
+
+					<div class="form-group form-row">
+						<div class="input-group">
+
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_1}" id="class_1" /> <a
+									onclick="showDescription(1);" href="#">01</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_2}" id="class_2" /> <a
+									onclick="showDescription(2);" href="#">02</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_3}" id="class_3" /> <a
+									onclick="showDescription(3);" href="#">03</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_4}" id="class_4" /> <a
+									onclick="showDescription(4);" href="#">04</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_5}" id="class_5" /> <a
+									onclick="showDescription(5);" href="#">05</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_6}" id="class_6" /> <a
+									onclick="showDescription(6);" href="#">06</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_7}" id="class_7" /> <a
+									onclick="showDescription(7);" href="#">07</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_8}" id="class_8" /> <a
+									onclick="showDescription(8);" href="#">08</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_9}" id="class_9" /> <a
+									onclick="showDescription(9);" href="#">09</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_10}" id="class_10" />
+								<a onclick="showDescription(10);" href="#">10</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="input-group">
+
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_11}" id="class_11" />
+								<a onclick="showDescription(11);" href="#">11</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_12}" id="class_12" />
+								<a onclick="showDescription(12);" href="#">12</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_13}" id="class_13" />
+								<a onclick="showDescription(13);" href="#">13</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_14}" id="class_14" />
+								<a onclick="showDescription(14);" href="#">14</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_15}" id="class_15" />
+								<a onclick="showDescription(15);" href="#">15</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_16}" id="class_16" />
+								<a onclick="showDescription(16);" href="#">16</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_17}" id="class_17" />
+								<a onclick="showDescription(17);" href="#">17</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_18}" id="class_18" />
+								<a onclick="showDescription(18);" href="#">18</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_19}" id="class_19" />
+								<a onclick="showDescription(19);" href="#">19</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_20}" id="class_20" />
+								<a onclick="showDescription(20);" href="#">20</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="input-group">
+
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_21}" id="class_21" />
+								<a onclick="showDescription(21);" href="#">21</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_22}" id="class_22" />
+								<a onclick="showDescription(22);" href="#">22</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_23}" id="class_23" />
+								<a onclick="showDescription(23);" href="#">23</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_24}" id="class_24" />
+								<a onclick="showDescription(24);" href="#">24</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_25}" id="class_25" />
+								<a onclick="showDescription(25);" href="#">25</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_26}" id="class_26" />
+								<a onclick="showDescription(26);" href="#">26</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_27}" id="class_27" />
+								<a onclick="showDescription(27);" href="#">27</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_28}" id="class_28" />
+								<a onclick="showDescription(28);" href="#">28</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_29}" id="class_29" />
+								<a onclick="showDescription(29);" href="#">29</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_30}" id="class_30" />
+								<a onclick="showDescription(30);" href="#">30</a>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="input-group">
+
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_31}" id="class_31" />
+								<a onclick="showDescription(31);" href="#">31</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_32}" id="class_32" />
+								<a onclick="showDescription(32);" href="#">32</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_33}" id="class_33" />
+								<a onclick="showDescription(33);" href="#">33</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_34}" id="class_34" />
+								<a onclick="showDescription(34);" href="#">34</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_35}" id="class_35" />
+								<a onclick="showDescription(35);" href="#">35</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_36}" id="class_36" />
+								<a onclick="showDescription(36);" href="#">36</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_37}" id="class_37" />
+								<a onclick="showDescription(37);" href="#">37</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_38}" id="class_38" />
+								<a onclick="showDescription(38);" href="#">38</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_39}" id="class_39" />
+								<a onclick="showDescription(39);" href="#">39</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_40}" id="class_40" />
+								<a onclick="showDescription(40);" href="#">40</a>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="input-group">
+
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_41}" id="class_41" />
+								<a onclick="showDescription(41);" href="#">41</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_42}" id="class_42" />
+								<a onclick="showDescription(42);" href="#">42</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_43}" id="class_43" />
+								<a onclick="showDescription(43);" href="#">43</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_44}" id="class_44" />
+								<a onclick="showDescription(44);" href="#">44</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" th:field="*{class_45}" id="class_45" />
+								<a onclick="showDescription(45);" href="#">45</a>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" id="class_Tumu" onclick="selectAll();" />
+								Tümü
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">Hesap</div>
+				<div class="card-body">
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="partner.name" class="control-label">Harç</label>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<input type="text" th:field="*{fee}"
+								class="form-control" readonly="readonly" />
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<label for="partner.name" class="control-label">Hizmet</label>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<input type="text" th:field="*{service}"
+								class="form-control" readonly="readonly" />
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<label for="partner.name" class="control-label">Toplam</label>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<input type="text" th:field="*{total}"
+								class="form-control" readonly="readonly" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Kaydet</button>
+
+		</form>
+		<script type="text/javascript" th:src="@{js/brand.js}"></script>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<meta charset="UTF-8" />
+<body>
+	<section layout:fragment="content">
+
+		<form action="#" th:action="@{/registration}" th:object="${user}"
+			method="post" class="needs-validation" novalidate>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="username">Kullanıcı Adı</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="text" th:field="*{username}"
+						placeholder="Kullanıcı Adı" maxlength="15" class="form-control"
+						required="required" />
+					<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="invalid-feedback d-block"></div>
+					
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="password">Şifre</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="input-group">
+						<input type="password" th:field="*{password}" placeholder="Şifre"
+							maxlength="15" class="form-control" required="required" />
+						<div th:if="${#fields.hasErrors('password')}"
+							th:errors="*{password}" class="invalid-feedback d-block"></div>						
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-2">
+					<label for="passwordConfirm">Şifre (Tekrar)</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="password" th:field="*{passwordConfirm}"
+						placeholder="Şifre" maxlength="15" class="form-control"
+						required="required" />
+					<div th:if="${#fields.hasErrors('passwordConfirm')}"
+						th:errors="*{passwordConfirm}" class="invalid-feedback d-block"></div>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="partnerTuru">Partner Türü</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<select th:field="*{partnerTuru}" class="form-control"
+						required="required">
+						<option value="">Tür seçiniz..</option>
+						<option
+							th:each="partnerTuru : ${T(tr.com.sbf.model.PartnerTur).values()}"
+							th:value="${partnerTuru}" th:text="${partnerTuru.displayName}">
+						</option>
+					</select>
+					<div th:if="${#fields.hasErrors('partnerTuru')}"
+						th:errors="*{partnerTuru}" class="invalid-feedback d-block"></div>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="adSoyad">Ad Soyad</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="text" th:field="*{adSoyad}" placeholder="Ad Soyad"
+						maxlength="15" class="form-control" required="required" />
+					<div th:if="${#fields.hasErrors('adSoyad')}" th:errors="*{adSoyad}"
+						class="invalid-feedback d-block"></div>
+				</div>
+
+				<div class="col-md-2 col-sm-2">
+					<label for="unvan">Ünvan</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="text" th:field="*{unvan}" placeholder="Ünvan"
+						maxlength="15" class="form-control" disabled="disabled" />
+					<div th:if="${#fields.hasErrors('unvan')}" th:errors="*{unvan}"
+						class="invalid-feedback d-block"></div>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="tcKimlikNo">TC Kimlik No</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="number" th:field="*{tcKimlikNo}"
+						placeholder="TC Kimlik No" maxlength="11" size="11"
+						class="form-control" disabled="disabled" min="10000000000"
+						max="99999999999" />
+					<div th:if="${#fields.hasErrors('tcKimlikNo')}"
+						th:errors="*{tcKimlikNo}" class="invalid-feedback d-block"></div>
+				</div>
+
+				<div class="col-md-2 col-sm-2">
+					<label for="vergiNo">Vergi No</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="number" th:field="*{vergiNo}" placeholder="Vergi No"
+						maxlength="15" class="form-control" disabled="disabled" />
+					<div th:if="${#fields.hasErrors('vergiNo')}" th:errors="*{vergiNo}"
+						class="invalid-feedback d-block"></div>
+				</div>
+
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="gsm">GSM</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="tel" th:field="*{gsm}" placeholder="GSM"
+						maxlength="15" class="form-control" required="required"
+						data-mask="(000) 000 00 00" />
+					<div th:if="${#fields.hasErrors('gsm')}" th:errors="*{gsm}"
+						class="invalid-feedback d-block"></div>
+				</div>
+
+				<div class="col-md-2 col-sm-2">
+					<label for="isTelefon">İş Telefon</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="tel" th:field="*{isTelefon}" placeholder="İş Telefon"
+						maxlength="15" class="form-control" data-mask="(000) 000 00 00" />
+					<div th:if="${#fields.hasErrors('isTelefon')}"
+						th:errors="*{isTelefon}" class="invalid-feedback d-block"></div>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="email">E-Posta</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="email" th:field="*{email}" placeholder="E-Posta"
+						maxlength="15" class="form-control" required="required" />
+					<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+						class="invalid-feedback d-block"></div>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="meslekTuru">Meslek</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<select th:field="*{meslekTuru}" class="form-control"
+						required="required">
+						<option value="">Meslek seçiniz..</option>
+						<option
+							th:each="meslekTuru : ${T(tr.com.sbf.model.Jobs).values()}"
+							th:value="${meslekTuru}" th:text="${meslekTuru.displayName}">
+						</option>
+					</select>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<input type="text" th:field="*{meslek}" placeholder="Diğer Meslek"
+						maxlength="15" class="form-control" disabled="disabled" />
+					<div th:if="${#fields.hasErrors('meslekTuru')}"
+						th:errors="*{meslekTuru}" class="invalid-feedback d-block"></div>
+				</div>
+			</div>
+			
+
+			<div class="form-group form-row">
+				<div class="col-md-2 col-sm-2">
+					<label for="cityCode">İl</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<select th:field="*{cityCode}" class="form-control"
+						placeholder="İl seçiniz" required="required" name="citiesCombo"
+						id="citiesCombo">
+					</select>
+					<div th:if="${#fields.hasErrors('cityCode')}"
+						th:errors="*{cityCode}" class="invalid-feedback d-block"></div>
+				</div>
+
+				<div class="col-md-2 col-sm-2">
+					<label for="districtCode">İlçe</label>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<select th:field="*{districtCode}" class="form-control"
+						placeholder="İlçe seçiniz" required="required"
+						name="districtsCombo" id="districtsCombo">
+					</select>
+					<div th:if="${#fields.hasErrors('districtCode')}"
+						th:errors="*{districtCode}" class="invalid-feedback d-block"></div>
+				</div>
+
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">Kaydet</button>
+
+
+
+		</form>
+		<script type="text/javascript" th:src="@{js/register.js}"></script>
+	</section>
+	
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>SBF Lütfen login olunuz</title>
+<link href="css/styleLogin.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="body"></div>
+	<div class="grad"></div>
+	<div class="header">
+		<div>
+			SBF<span> Danışmanlık</span>
+		</div>
+	</div>
+	<br />
+
+	<form th:action="@{/login}" method="post">
+		<div class="login">
+			<div>
+				<input type="text" name="username" placeholder="Kullanıcı Adı"
+					autofocus="autofocus" />
+			</div>
+			<div>
+				<input type="password" name="password" placeholder="Şifre" />
+			</div>
+			<div>
+				<input type="submit" value="Sign In" />
+			</div>
+			<div class="message" th:if="${param.error}">Geçersiz kullanıcı
+				adı veya şifre.</div>
+			<div class="message" th:if="${param.logout}">You have been
+				logged out.</div>
+		</div>
+	</form>
+
+</body>
+</html>

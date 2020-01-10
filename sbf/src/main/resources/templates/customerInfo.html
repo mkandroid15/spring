@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="customer">
+
+		<div class="card">
+			<div class="card-header">Müşteri</div>
+			<div class="card-body">
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.partnerTuru">Müşteri Türü</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<select th:field="*{customer.partnerTuru}" class="form-control"
+							required="required">
+							<option value="">Tür seçiniz..</option>
+							<option
+								th:each="partnerTuru : ${T(tr.com.sbf.model.PartnerTur).values()}"
+								th:value="${partnerTuru}" th:text="${partnerTuru.displayName}">
+							</option>
+						</select>
+						<div th:if="${#fields.hasErrors('customer.partnerTuru')}"
+							th:errors="*{customer.partnerTuru}"
+							class="invalid-feedback d-block"></div>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.tcKimlikNo">TC Kimlik No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="number" th:field="*{customer.tcKimlikNo}"
+							placeholder="TC Kimlik No" maxlength="11"
+							class="form-control" disabled="disabled" min="10000000000"
+							max="99999999999" oninput="maxLengthCheck(this)"/>
+						<div th:if="${#fields.hasErrors('customer.tcKimlikNo')}"
+							th:errors="*{customer.tcKimlikNo}"
+							class="invalid-feedback d-block"></div>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.vergiNo">Vergi No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="number" th:field="*{customer.vergiNo}"
+							placeholder="Vergi No" maxlength="10" class="form-control"
+							disabled="disabled" min="1000000000"
+							max="9999999999" oninput="maxLengthCheck(this)"/>
+						<div th:if="${#fields.hasErrors('customer.vergiNo')}"
+							th:errors="*{customer.vergiNo}" class="invalid-feedback d-block"></div>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="cityCode">İl</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<select th:field="*{customer.cityCode}" class="form-control"
+							placeholder="İl seçiniz" required="required" name="citiesCombo"
+							id="citiesCombo">
+						</select>
+						<div th:if="${#fields.hasErrors('customer.cityCode')}"
+							th:errors="*{customer.cityCode}" class="invalid-feedback d-block"></div>
+					</div>
+
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.districtCode">İlçe</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<select th:field="*{customer.districtCode}" class="form-control"
+							placeholder="İlçe seçiniz" required="required"
+							name="districtsCombo" id="districtsCombo">
+						</select>
+						<div th:if="${#fields.hasErrors('customer.districtCode')}"
+							th:errors="*{customer.districtCode}"
+							class="invalid-feedback d-block"></div>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.personName">İlgili Kişi</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="text" th:field="*{customer.personName}"
+							placeholder="İlgili Kişi" maxlength="15" class="form-control"
+							required="required" />
+						<div th:if="${#fields.hasErrors('customer.personName')}"
+							th:errors="*{customer.personName}"
+							class="invalid-feedback d-block"></div>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.gsm">GSM</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="tel" th:field="*{customer.gsm}" placeholder="GSM"
+							maxlength="15" class="form-control" required="required"
+							data-mask="(000) 000 00 00" />
+						<div th:if="${#fields.hasErrors('customer.gsm')}"
+							th:errors="*{customer.gsm}" class="invalid-feedback d-block"></div>
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.workPhone">İş Telefon</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="tel" th:field="*{customer.workPhone}"
+							placeholder="İş Telefon" maxlength="15" class="form-control"
+							data-mask="(000) 000 00 00" />
+						<div th:if="${#fields.hasErrors('customer.workPhone')}"
+							th:errors="*{customer.workPhone}"
+							class="invalid-feedback d-block"></div>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.email">E-Posta</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<input type="email" th:field="*{customer.email}"
+							placeholder="E-Posta" maxlength="15" class="form-control"
+							required="required" />
+						<div th:if="${#fields.hasErrors('customer.email')}"
+							th:errors="*{customer.email}" class="invalid-feedback d-block"></div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<script type="text/javascript" th:src="@{js/customerGeneral.js}"></script>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="partner">
+		<div class="card">
+			<div class="card-header">Partner</div>
+			<div class="card-body">
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="partner.name">İsim</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{partner.name}" class="form-control"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="partner.partaj">Partaj No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+
+						<a class="card-link" data-toggle="collapse"
+							href="#collapseExample" role="button" aria-expanded="false"
+							aria-controls="collapseExample">
+							<p th:text="*{partner.partaj}" class="form-control"></p>
+						</a>
+					</div>
+				</div>
+
+				<div class="collapse" id="collapseExample">
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="partner.brans">Brans</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<p th:text="*{partner.brans}" class="form-control"></p>
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="gsm">Gsm</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<p th:text="*{partner.gsm}" class="form-control"></p>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<label for="workphone">İş Telefon</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<p th:text="*{partner.workphone}" class="form-control"></p>
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="email">EPosta</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<p th:text="*{partner.email}" class="form-control"></p>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<label for="district">İlçe</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<p th:text="*{partner.district}" class="form-control"></p>
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="city">İl</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<p th:text="*{partner.city}" class="form-control"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="customer">
+
+		<div class="card">
+			<div class="card-header">Müşteri</div>
+			<div class="card-body">
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.partnerTuru">Müşteri Türü</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.partnerTuru}" class="form-control"></p>
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.tcKimlikNo">TC Kimlik No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.tcKimlikNo}" class="form-control"></p>
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.vergiNo">Vergi No</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.vergiNo}" class="form-control"></p>
+
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="cityCode">İl</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.cityCode}" class="form-control"></p>
+
+					</div>
+
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.districtCode">İlçe</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.districtCode}" class="form-control"></p>
+
+					</div>
+
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.personName">İlgili Kişi</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.personName}" class="form-control"></p>
+
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.gsm">GSM</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.gsm}" class="form-control"></p>
+
+					</div>
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.workPhone">İş Telefon</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.workPhone}" class="form-control"></p>
+
+					</div>
+				</div>
+
+				<div class="form-group form-row">
+					<div class="col-md-2 col-sm-2">
+						<label for="customer.email">E-Posta</label>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<p th:text="*{customer.email}" class="form-control"></p>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<script type="text/javascript" th:src="@{js/customerGeneral.js}"></script>
+	</div>
+
+</body>
+</html>

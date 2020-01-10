@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{officialLayout}">
+<meta charset="UTF-8" />
+<title>Onay Bekleyen Marka Talebi</title>
+<body>
+
+	<section layout:fragment="contentheader">
+		<p>
+			<strong>Onay Bekleyen Marka Talebi</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+		<form action="#" th:action="@{/marka}" th:object="${marka}"
+			method="post" class="needs-validation" novalidate>
+
+			<div th:substituteby="partnerInfo :: partner"></div>
+			<div th:substituteby="common/customerInfoReadOnly :: customer"></div>
+			<div th:substituteby="brandDemandReadOnly :: brand"></div>
+			
+
+			<button type="submit" class="btn btn-primary">Kaydet</button>
+		</form>
+		
+	</section>
+
+</body>
+</html>

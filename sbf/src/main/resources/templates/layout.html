@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+	  content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" type="text/css"
+	  th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}" />
+  <link
+	  href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
+	  rel="stylesheet">
+  <link th:href="@{/css/blog.css}" rel="stylesheet" />
+  <link th:href="@{/css/form-validation.css}" rel="stylesheet" />
+  <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+</head>
+<body>
+
+	<header>
+
+		<div class="container">
+
+			<header class="blog-header py-3">
+				<div
+					class="row flex-nowrap justify-content-between align-items-center">
+					<div class="col-4 pt-1">
+						<a class="text-muted" href="#">Subscribe</a>
+					</div>
+					<div class="col-4 text-center">
+						<a class="blog-header-logo text-dark" href="#">SBF</a>
+					</div>
+					<div class="col-4 d-flex justify-content-end align-items-center">
+						<a class="text-muted" href="#"> <svg
+								xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+								class="mx-3">
+								<circle cx="10.5" cy="10.5" r="7.5"></circle>
+								<line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+						</a> <a class="btn btn-sm btn-outline-secondary" href="#">Giriş</a>
+					</div>
+				</div>
+			</header>
+
+			<section layout:fragment="contentmenu"></section>
+
+
+
+		</div>
+
+	</header>
+	<div class="container">
+
+
+
+		<div class="page-header">
+			<section layout:fragment="contentheader"></section>
+		</div>
+
+		<section layout:fragment="content"></section>
+
+		<div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
+			aria-labelledby="messageModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content" id="messageContent">
+					<div class="modal-header">
+						<h5 class="modal-title" id="messageModalLabel"></h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p id="messageModalContext"></p>
+						<span class="badge" id="messageModalBadge"></span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Kapat</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<h6>
+				SBF <small>2018</small>
+			</h6>
+			<p layout:fragment="custom-footer"></p>
+		</footer>
+
+
+
+	</div>
+
+	<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.mask.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/genel.js}"></script>
+
+</body>
+</html>

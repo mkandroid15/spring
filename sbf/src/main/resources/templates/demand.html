@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{signedLayout}">
+<meta charset="UTF-8" />
+<title>Talep Giriş</title>
+<body>
+
+	<section layout:fragment="contentheader">
+		<p>
+			<strong> Talep Sayfası</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+
+
+<form action="#" th:action="@{/talep}"
+		th:object="${demand}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+
+
+
+			<div th:substituteby="partnerInfo :: partner"></div>
+			
+			<div th:substituteby="customerInfo :: customer"></div>
+
+			<div class="card">
+				<div class="card-header">Talep</div>
+				<div class="card-body">
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="consulting.consultingType">Talep Türü</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<select th:field="*{consulting.consultingType}"
+								class="form-control" required="required">
+								<option value="">Tür seçiniz..</option>
+								<option
+									th:each="consType : ${T(tr.com.sbf.model.ConsultingType).values()}"
+									th:value="${consType}" th:text="${consType.displayName}">
+								</option>
+							</select>
+							<div th:if="${#fields.hasErrors('consulting.consultingType')}"
+								th:errors="*{consulting.consultingType}"
+								class="invalid-feedback d-block"></div>
+						</div>
+
+					</div>
+
+					<div id="cons_other" name="cons_other" style="display: none;">
+
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="consulting.subject">Konu</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{consulting.subject}"
+									placeholder="Konu" maxlength="15" class="form-control"
+									required="required" />
+								<div th:if="${#fields.hasErrors('consulting.subject')}"
+									th:errors="*{consulting.subject}"
+									class="invalid-feedback d-block"></div>
+							</div>
+
+							<div class="col-md-2 col-sm-2">
+								<label for="consulting.description">Açıklama</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{consulting.description}"
+									placeholder="Açıklama" maxlength="15" class="form-control"
+									required="required" />
+								<div th:if="${#fields.hasErrors('consulting.description')}"
+									th:errors="*{consulting.description}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+
+						<div class="form-group form-row">
+							<div class="form-group">
+								<div class="col-xs-12 col-sm-2 col-md-2">
+									<label for="consulting.file" class="control-label">Dosya</label>
+								</div>
+								<div class="col-xs-12 col-sm-4 col-md-4">
+									<input type="file" th:field="*{consulting.file}" />
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="cons_osgh" name="cons_osgh" style="display: none;">
+
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="consulting.dangerState">Tehlike Türü</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<select th:field="*{consulting.dangerState}"
+									class="form-control" required="required">
+									<option value="">Tür seçiniz..</option>
+									<option
+										th:each="dangerType : ${T(tr.com.sbf.model.DangerState).values()}"
+										th:value="${dangerType}" th:text="${dangerType.displayName}">
+									</option>
+								</select>
+								<div th:if="${#fields.hasErrors('consulting.dangerState')}"
+									th:errors="*{consulting.dangerState}"
+									class="invalid-feedback d-block"></div>
+							</div>
+
+							<div class="col-md-2 col-sm-2">
+								<label for="consulting.personCount">Personel Sayısı</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="number" th:field="*{consulting.personCount}"
+									placeholder="Personel Sayısı" maxlength="15" />
+								<div th:if="${#fields.hasErrors('consulting.personCount')}"
+									th:errors="*{consulting.personCount}"
+									class="invalid-feedback d-block"></div>
+							</div>
+
+						</div>
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="consulting.naceCode">Nace Kodu</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="number" th:field="*{consulting.naceCode}"
+									placeholder="Nace Kodu" maxlength="15" />
+								<div th:if="${#fields.hasErrors('consulting.naceCode')}"
+									th:errors="*{consulting.naceCode}"
+									class="invalid-feedback d-block"></div>
+							</div>
+							<div class="col-md-2 col-sm-2">
+								<label class="form-check-label">Osgb Hizmetleri</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbHizmetAylikIsGuvenligi}"
+										value="false" /> <label class="form-check-label">
+										Aylık İş Güvenliği Uzmanı Hizmeti </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbHizmetAylikIsyeri}" value="false" />
+									<label class="form-check-label"> Aylık İşyeri Hekimliği
+										Hizmeti</label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbHizmetAylikSaglikPersonel}"
+										value="false" /> <label class="form-check-label">Aylık
+										Sağlık Personeli Hizmeti </label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label class="form-check-label">Osgb Danışmanlık</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbDanismanlikIsGuvenligi}"
+										value="false" /> <label class="form-check-label"> İş
+										Güvenliği Denetimi / Danışmanlığı </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbDanismanlikRiskAnalizi}"
+										value="false" /> <label class="form-check-label">
+										Risk Analizi ve Değerlendirme Raporu </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbDanismanlikSaglikGuvenlikPlani}"
+										value="false" /> <label class="form-check-label">
+										Sağlık Güvenlik Planı / Dökümanı </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbDanismanlikAcilDurumPlani}"
+										value="false" /> <label class="form-check-label">
+										Acil Durum Planı ve Tahliye Tatbikatı </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.osgbDanismanlikYanginRiskAnalizi}"
+										value="false" /><label class="form-check-label">
+										Yangın Risk Analizi </label>
+								</div>
+							</div>
+
+
+							<div class="col-md-2 col-sm-2">
+								<label class="control-label">Periyodik Sağlık Hizmetleri</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikAkcigerGrafitisi}"
+										value="false" /> <label class="form-check-label">Akçiğer
+										Grafisi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikOdioSft}" value="false" />
+									<label class="form-check-label">Odio SFT </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikIdrarTahlili}"
+										value="false" /> <label class="form-check-label">Tam
+										İdrar Tahlili </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikHemogram}" value="false" />
+									<label class="form-check-label">Hemogram </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikKanGrubu}" value="false" />
+									<label class="form-check-label">Kan Grubu </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikASL}" value="false" />
+									<label class="form-check-label">ASL / ALT / GGT </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.periyodikSaglikPortor}" value="false" />
+									<label class="form-check-label">Portör </label>
+
+								</div>
+							</div>
+
+						</div>
+						<div class="form-group form-row">
+
+							<div class="col-md-2 col-sm-2">
+								<label class="control-label">Eğitim Hizmetleri</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimCalisanTemelIsGuvenligi}"
+										value="false" /> <label class="form-check-label">
+										Çalışanlara Temel İş Güvenliği Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimISGKurulUye}" value="false" /> <label
+										class="form-check-label"> Çalışan Temsilcisi İSG Kurul
+										Üyeleri Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimRiskDegerlendirme}" value="false" />
+									<label class="form-check-label"> Risk Değerlendirme
+										Ekip Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimAcilDurumEkip}" value="false" />
+									<label class="form-check-label"> Acil Durum Ekip
+										Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimYanginEgitim}" value="false" />
+									<label class="form-check-label"> Yangın Eğitim ve
+										Söndürme Tatbikatı </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimAcilDurumPlanTahliye}"
+										value="false" /> <label class="form-check-label">
+										Acil Durum Planı Eğitim ve Tahliye Tatbikatı </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimElleKaldirma}" value="false" />
+									<label class="form-check-label"> Elle Kaldırma ve
+										Taşıma Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimSaglikGuvenlikIsaret}"
+										value="false" /> <label class="form-check-label">
+										Sağlık ve Güvenlik İşaretleri Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimIsHijyen}" value="false" /> <label
+										class="form-check-label"> İş Hijyeni Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimIlkYardim}" value="false" /> <label
+										class="form-check-label"> İlk Yardım Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimKisiselKoruyucu}" value="false" />
+									<label class=""> Kişisel Koruyucu Donanım Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimIsEkipmanlari}" value="false" />
+									<label> İş Ekipmanları Güvenli Kullanım Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimKapaliAlanCalisma}" value="false" />
+									<label class="form-check-label"> Kapalı Alanlarda
+										Çalışma Eğitimi </label>
+								</div>
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input"
+										th:field="*{consulting.egitimEkranliAraclarlaCalisma}"
+										value="false" /> <label class="form-check-label">
+										Ekranlı Araçlarda Güvenli Çalışma Eğitimi </label>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Kaydet</button>
+		</form>
+		<script type="text/javascript" th:src="@{js/demand.js}"></script>
+
+	</section>
+</body>
+</html>

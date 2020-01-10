@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{signedLayout}">
+<meta charset="UTF-8" />
+<title>Ana Sayfa</title>
+<body>
+	<section layout:fragment="content">
+		<p>
+			<span th:text="'Merhaba ' + ${name}"></span> <strong>SBF</strong> ye
+			hoşgeldiniz :)
+		</p>
+	</section>
+</body>
+</html>

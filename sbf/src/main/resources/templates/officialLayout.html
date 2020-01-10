@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8" />
+  <title>SBF</title>
+</head>
+<body>
+	<section layout:fragment="contentmenu">
+		<div class="nav-scroller py-1 mb-2">
+			<nav class="nav d-flex justify-content-between">
+				<a class="p-2 text-muted" th:href="@{/}">Ana Sayfa</a>
+				<a class="p-2 text-muted" th:href="@{/insuranceDemandlist}">Sigorta Talepleri</a> 
+				<a class="p-2 text-muted" th:href="@{/consultingDemandlist}">Danışmanlık Talepleri</a> 
+				<a class="p-2 text-muted" th:href="@{/brandDemandlist}">Marka Talepleri</a>
+			</nav>
+		</div>
+	</section>
+
+</body>
+</html>

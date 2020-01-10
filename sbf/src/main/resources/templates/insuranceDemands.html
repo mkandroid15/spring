@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{officialLayout}">
+<meta charset="UTF-8" />
+<title>Sigorta Talepleri</title>
+<body>
+	<section layout:fragment="contentheader">
+		<p>
+			<strong>Sigorta Talepleri</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+
+		<ul class="list-group">
+			<li th:each="demand, rowStat: ${demandlist}"><a
+				class="list-group-item list-group-item-action"
+				th:href="@{'/approvalInsurance/'+ ${demand.id}}" target="_self"> <label
+					th:text="${demand.userNameSurname}"></label>
+			</a></li>
+		</ul>
+
+	</section>
+
+</body>
+</html>

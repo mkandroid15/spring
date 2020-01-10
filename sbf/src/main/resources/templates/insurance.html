@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{signedLayout}">
+<meta charset="UTF-8" />
+<title>Sigorta Giriş</title>
+<body>
+
+	<section layout:fragment="contentheader">
+		<p>
+			<strong>Sigorta Sayfası</strong>
+		</p>
+	</section>
+
+	<section layout:fragment="content">
+		<form action="#" th:action="@{/insurance}" th:object="${insurance}"
+			method="post" class="needs-validation" novalidate>
+
+			<div th:substituteby="partnerInfo :: partner"></div>
+			<div th:substituteby="customerInfo :: customer"></div>
+
+			<div class="card">
+				<div class="card-header">Sigorta</div>
+				<div class="card-body">
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="selectedPolicyType">Poliçe Türü</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<select th:field="*{selectedPolicyType}" class="form-control"
+								required="required">
+								<option value="">Tür seçiniz..</option>
+								<option
+									th:each="insuranceType : ${T(tr.com.sbf.model.PolicyType).values()}"
+									th:value="${insuranceType}"
+									th:text="${insuranceType.displayName}"></option>
+							</select>
+							<div th:if="${#fields.hasErrors('selectedPolicyType')}"
+								th:errors="*{selectedPolicyType}"
+								class="invalid-feedback d-block"></div>
+						</div>
+						<div class="col-md-2 col-sm-2">
+							<label class="control-label">Rehin / Alacaklı</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									th:field="*{payeeExist}" value="false" /> <label
+									class="form-check-label"> var / yok </label>
+							</div>
+						</div>
+					</div>
+
+					<div id="rehinDetay" name="rehinDetay" style="display: none;">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="bankaFinans">Banka Finans</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{bankaFinans}"
+									placeholder="Banka Finans" maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('bankaFinans')}"
+									th:errors="*{bankaFinans}" class="invalid-feedback d-block"></div>
+							</div>
+							<div class="col-md-2 col-sm-2">
+								<label for="sube">Şube</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{sube}" placeholder="Şube"
+									maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('sube')}" th:errors="*{sube}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<div class="col-md-2 col-sm-2">
+							<label for="processType">İşlem</label>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<select th:field="*{processType}" class="form-control"
+								required="required">
+								<option value="">Tür seçiniz..</option>
+								<option
+									th:each="process : ${T(tr.com.sbf.model.ProcessType).values()}"
+									th:value="${processe}" th:text="${process.displayName}"></option>
+							</select>
+							<div th:if="${#fields.hasErrors('processType')}"
+								th:errors="*{processType}" class="invalid-feedback d-block"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="card">
+				<div class="card-header">Trafik / Kasko</div>
+				<div class="card-body">
+					<div style="display: none;" id="plakaDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label class="control-label">Plaka</label>
+							</div>
+							<div class="col-md-1 col-sm-1">
+								<input type="number" th:field="*{plakaIl}" min="0" max="81"
+									class="form-control" />
+							</div>
+							<div class="col-md-1 col-sm-1">
+								<input type="text" th:field="*{plakaHarf}" maxlength="3"
+									class="form-control" />
+							</div>
+							<div class="col-md-2 col-sm-2">
+								<input type="number" th:field="*{plakaSayi}" min="0" max="9999"
+									class="form-control" />
+							</div>
+							<div th:if="${#fields.hasErrors('plakaIl')}"
+								th:errors="*{plakaIl}" class="invalid-feedback d-block"></div>
+						</div>
+					</div>
+					<div style="display: none;" id="plakaSifirDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label class="control-label">Plaka</label>
+							</div>
+							<div class="col-md-1 col-sm-1">
+								<input type="number" th:field="*{plakaSifirIl}" min="0" max="81"
+									class="form-control" />
+							</div>
+							<div th:if="${#fields.hasErrors('plakaSifirIl')}"
+								th:errors="*{plakaSifirIl}" class="invalid-feedback d-block"></div>
+						</div>
+					</div>
+					<div style="display: none;" id="asbisNoDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="asbisNo">Absis No</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{asbisNo}" placeholder="Absis No"
+									maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('asbisNo')}"
+									th:errors="*{asbisNo}" class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" id="belgeSeriDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="asbisNo">Belge Seri No </label>
+							</div>
+							<div class="col-md-1 col-sm-1">
+								<input type="text" th:field="*{belgeSeri}" class="form-control"
+									maxlength="2" />
+							</div>
+							<div class="col-md-3 col-sm-3">
+								<input type="number" th:field="*{belgeSeriNo}" min="0"
+									max="999999" class="form-control" />
+								<div th:if="${#fields.hasErrors('belgeSeri')}"
+									th:errors="*{belgeSeri}" class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" id="markaDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="marka">Marka</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{marka}" placeholder="Marka"
+									maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('marka')}" th:errors="*{marka}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" id="markaKoduDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="markaKodu">Marka Kodu</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{markaKodu}"
+									placeholder="Marka Kodu" maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('markaKodu')}"
+									th:errors="*{markaKodu}" class="invalid-feedback d-block"></div>
+							</div>
+
+						</div>
+					</div>
+					<div style="display: none;" id="modelYiliDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="modelYili">Model Yılı</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<select th:field="*{modelYili}" class="form-control">
+									<option value="-1">Yıl seçiniz..</option>
+									<option value="2018">2018</option>
+									<option value="2017">2017</option>
+									<option value="2016">2016</option>
+									<option value="2015">2015</option>
+									<option value="2014">2014</option>
+									<option value="2013">2013</option>
+									<option value="2012">2012</option>
+									<option value="2011">2011</option>
+									<option value="2010">2010</option>
+									<option value="2009">2009</option>
+									<option value="2008">2008</option>
+									<option value="2007">2007</option>
+									<option value="2006">2006</option>
+									<option value="2005">2005</option>
+									<option value="2004">2004</option>
+									<option value="2003">2003</option>
+									<option value="2018">2002</option>
+									<option value="2001">2001</option>
+
+								</select>
+
+								<div th:if="${#fields.hasErrors('modelYili')}"
+									th:errors="*{modelYili}" class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" id="motorNoDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="motorNo">Motor No</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{motorNo}" placeholder="Marka No"
+									maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('motorNo')}"
+									th:errors="*{motorNo}" class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" id="saseNoDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="saseNo">Şase No</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{saseNo}" placeholder="Şase No"
+									maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('saseNo')}"
+									th:errors="*{saseNo}" class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" id="policeBitisVadesiDiv">
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="policeBitisVadesi">Poliçe Bitiş Vadesi</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{policeBitisVadesi}"
+									placeholder="Poliçe Bitiş Vadesi" maxlength="15"
+									class="form-control" />
+								<div th:if="${#fields.hasErrors('policeBitisVadesi')}"
+									th:errors="*{policeBitisVadesi}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+					</div>
+					<div id="referans" style="display: none;">
+						<h4>Referans</h4>
+
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="referansSigortaSirketi">Sigorta Şirketi</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<select th:field="*{referansSigortaSirketi}"
+									class="form-control">
+									<option value="">Şirket seçiniz..</option>
+									<option value="Allianz">Allianz</option>
+									<option value="Ak Sigorta">Ak Sigorta</option>
+									<option value="Anadolu Sigorta">Anadolu Sigorta</option>
+									<option value="Güneş Sigorta">Güneş Sigorta</option>
+									<option value="Doğa Sigorta">Doğa Sigorta</option>
+									<option value="Axa Sigorta">Axa Sigorta</option>
+									<option value="Halk Sigorta">Halk Sigorta</option>
+
+								</select>
+
+								<div th:if="${#fields.hasErrors('referansSigortaSirketi')}"
+									th:errors="*{referansSigortaSirketi}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="referansAcenteNo">Acente No</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{referansAcenteNo}"
+									placeholder="Acente No" maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('referansAcenteNo')}"
+									th:errors="*{referansAcenteNo}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+
+						<div class="form-group form-row">
+							<div class="col-md-2 col-sm-2">
+								<label for="referansPoliceNo">Poliçe No</label>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="text" th:field="*{referansPoliceNo}"
+									placeholder="Poliçe No" maxlength="15" class="form-control" />
+								<div th:if="${#fields.hasErrors('referansPoliceNo')}"
+									th:errors="*{referansPoliceNo}"
+									class="invalid-feedback d-block"></div>
+							</div>
+						</div>
+
+					</div>
+					<div id="desc" name="desc" style="display: none;">
+						<ul>
+							<li>
+								<h6>
+									<small>Yeni : sıfır olmayan yeni satın alınmış araçlar.</small>
+								</h6>
+							</li>
+							<li>
+								<h6>
+									<small>Yenileme : son 6 ay içinde geçerli mevcut
+										poliçesi bulunan.</small>
+								</h6>
+							</li>
+							<li>
+								<h6>
+									<small>Sıfır : sıfır araç ( ilk defa ruhsat alan).</small>
+								</h6>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<button type="submit" class="btn btn-primary">Kaydet</button>
+		</form>
+		<script type="text/javascript" th:src="@{js/insurance.js}"></script>
+
+	</section>
+</body>
+</html>
